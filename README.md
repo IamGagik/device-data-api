@@ -1,6 +1,6 @@
 # 📡 Device Data API
 
-Сервис для приёма и анализа телеметрических данных от устройств с возможностью получения агрегированной статистики по каждому устройству.
+A service for receiving and analyzing telemetry data from devices, with the ability to retrieve aggregated statistics for each device.
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green?logo=fastapi)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql)
@@ -8,97 +8,111 @@
 
 ---
 
-## 🚀 Стек технологий
+## 🚀 Tech Stack
 
-- 🐍 Python 3.11
-- ⚡ FastAPI
-- 🐘 PostgreSQL
-- 🐳 Docker + Docker Compose
-- 🧵 Async SQLAlchemy + asyncpg
-- 📄 Pydantic
+- 🐍 Python 3.11  
+- ⚡ FastAPI  
+- 🐘 PostgreSQL  
+- 🐳 Docker + Docker Compose  
+- 🧵 Async SQLAlchemy + asyncpg  
+- 📄 Pydantic  
 
 ---
 
-## 📦 Быстрый старт
+## 📦 Quick Start
 
-> ⚠️ Убедитесь, что установлены Docker и Docker Compose
+> ⚠️ Make sure you have Docker and Docker Compose installed
 
-### Клонировать репозиторий
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/IamGagik/device-data-api.git
 cd device-data-api
 ```
-### Запустить проект
+
+### 2. Run the project
+
 ```bash
 docker-compose up --build
 ```
 
-После запуска сервис будет доступен по адресу:
-👉 http://localhost:8000/docs — Swagger UI (интерактивная документация)
+After starting, the service will be available at:  
+👉 [http://localhost:8000/docs](http://localhost:8000/docs) — Swagger UI (interactive API documentation)
 
 ---
 
-## 🧠 Функциональность
+## 🧠 Features
 
-🔸 Добавление данных с устройствa
-    ```bash
-    POST /devices/{device_id}/data
-    ```
+### 🔹 Submit telemetry data from a device
 
-Пример запроса:
-    ```json
-    {
-    "x": 10.5,
-    "y": 4.2,
-    "z": 6.3
-    }
-    ```
+```http
+POST /devices/{device_id}/data
+```
 
-Пример ответа:
-    ```json
-    {
-    "status": "saved"
-    }
-    ```
+**Request example:**
 
-🔸 Получение агрегированной статистики
-    ```bash
-    GET /devices/{device_id}/analysis
-    ```
+```json
+{
+  "x": 10.5,
+  "y": 4.2,
+  "z": 6.3
+}
+```
 
-Пример ответа:
-    ```json
-    {
-    "min": 21.0,
-    "max": 33.4,
-    "count": 5,
-    "sum": 112.5,
-    "median": 23.7
-    }
-    ```
+**Response example:**
 
-⚙️ Настройка .env
-Создай в корне проекта файл .env и добавь строку:
-    ```bash
-    DATABASE_URL=postgresql+asyncpg://user:password@db:5432/devices
-    ```
+```json
+{
+  "status": "saved"
+}
+```
 
 ---
 
-## 🗂️ Структура проекта
-    ```bash
-    app/
-    ├── api/          # Роуты FastAPI
-    ├── db/           # Подключение к БД и модели
-    ├── schemas/      # Pydantic-схемы (валидаторы)
-    ├── services/     # Бизнес-логика (анализ)
-    └── main.py       # Точка входа
-    ```
+### 🔹 Get aggregated statistics for a device
+
+```http
+GET /devices/{device_id}/analysis
+```
+
+**Response example:**
+
+```json
+{
+  "min": 21.0,
+  "max": 33.4,
+  "count": 5,
+  "sum": 112.5,
+  "median": 23.7
+}
+```
 
 ---
 
-## 👨‍💻 Автор
-Разработано с душой ❤️
-GitHub: @IamGagik
+## ⚙️ .env Configuration
+
+Create a `.env` file in the root of the project and add:
+
+```env
+DATABASE_URL=postgresql+asyncpg://user:password@db:5432/devices
+```
 
 ---
+
+## 🗂️ Project Structure
+
+```text
+app/
+├── api/          # FastAPI routes
+├── db/           # DB connection and models
+├── schemas/      # Pydantic models (validation)
+├── services/     # Business logic (data analysis)
+└── main.py       # Entry point
+```
+
+---
+
+## 👨‍💻 Author
+
+Made with ❤️ by  
+**GitHub:** [@IamGagik](https://github.com/IamGagik)
