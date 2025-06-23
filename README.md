@@ -23,15 +23,15 @@
 
 > ⚠️ Убедитесь, что установлены Docker и Docker Compose
 
-    ```bash
-    # Клонировать репозиторий
-    git clone https://github.com/IamGagik/device-data-api.git
-    cd device-data-api
-
-    #Запустить проект
-    ```bash
-    docker-compose up --build
-    ```
+### Клонировать репозиторий
+```bash
+git clone https://github.com/IamGagik/device-data-api.git
+cd device-data-api
+```
+### Запустить проект
+```bash
+docker-compose up --build
+```
 
 После запуска сервис будет доступен по адресу:
 👉 http://localhost:8000/docs — Swagger UI (интерактивная документация)
